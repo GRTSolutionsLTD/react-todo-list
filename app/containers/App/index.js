@@ -12,14 +12,18 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-
+import Table from '../Table/Loadable';
+import Header from '../../components/Header';
 import GlobalStyle from '../../global-styles';
 
 export default function App() {
   return (
     <div>
+      <Header/>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/addTask"></Route>
+        <Route path="/table" component ={Table}/>
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

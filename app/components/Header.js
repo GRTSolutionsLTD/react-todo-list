@@ -20,6 +20,9 @@ function Header() {
         <Link to="/addTask">
           add task
         </Link>
+        <Link to="/circle">
+          show completed!
+        </Link>
       </nav>
     </div>
   );

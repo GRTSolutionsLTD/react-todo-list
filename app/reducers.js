@@ -7,13 +7,13 @@ import { connectRouter } from 'connected-react-router';
 
 import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import todos from './containers/App/reducers/Todo';
+import visibilityFilter from './containers/App/reducers/VisibilityFilter'
 
-/**
- * Merges the main reducer with the router state and dynamically injected reducers
- */
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    
+    globalTodos: todos,
+    visibilityFilter,
     language: languageProviderReducer,
     router: connectRouter(history),
     ...injectedReducers,

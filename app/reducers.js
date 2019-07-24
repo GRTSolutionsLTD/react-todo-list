@@ -12,7 +12,7 @@ import visibilityFilter from './containers/App/reducers/VisibilityFilter'
 
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    globalTodos: todos,
+    todos,
     visibilityFilter,
     language: languageProviderReducer,
     router: connectRouter(history),

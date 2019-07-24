@@ -15,7 +15,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Table from '../Table/Loadable';
 import Header from '../../components/Header';
 import GlobalStyle from '../../global-styles';
-import * as AppComponent from '../../components/AddTask/App';
+import AppComponent from '../../components/AddTask/App';
 import Circle from '../Circle/index';
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
       <Header/>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/addTask" component={AppComponent}></Route>
+        <Route path="/addTask" component={AppComponent}/>
         <Route path="/table" component ={Table}/>
         <Route path="/circle" component ={Circle}/>
         <Route component={NotFoundPage} />

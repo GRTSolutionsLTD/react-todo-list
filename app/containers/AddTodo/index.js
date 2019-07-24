@@ -1,52 +1,35 @@
-import React, { memo } from 'react';
+/* eslint-disable no-return-assign */
+import React from 'react';
 import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { compose, bindActionCreators } from 'redux';
-import * as todoActions from '../App/actions/index';
+import {addTodo} from '../App/actions/index'
 
-export function AddTodo({ actions }) {
-  let currentTaskToADD;
-  // onInputCahnge(event) => {
+const AddTodo = ({ dispatch }) => {
+  let input
 
-  // }
   return (
     <div>
-      <Helmet>
-        <title>AddTodo</title>
-        <meta name="description" content="Description of AddTodo" />
-      </Helmet>
-      {/* <input onChange={this.onInputCahnge} /> */}
-      <button type='button' onClick={() => { actions.addTodo(currentTaskToADD) }}>
-        Add Todo
-      </button>
-    </div>);
+      <form
+        onSubmit={e => {
+          e.preventDefault()
+          if (!input.value.trim()) {
+            return
+          }
+          dispatch(addTodo(input.value))
+          input.value = ''
+        }}>
+        <input
+          ref={node => input = node} />
+        <button type="submit">
+          Add Todo
+        </button>
+      </form>
+    </div>
+  )
 }
-
 AddTodo.propTypes = {
-  dispatch: PropTypes.func,
-  actions: PropTypes.func
+  dispatch: PropTypes.func
 };
 
-function mapStateToProps(state) {
-  return {
-    todoList: state
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions:
-      { addTodo: bindActionCreators(todoActions.addTodo, dispatch) }
-  }
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withConnect,
-  memo,
-)(AddTodo);
+export default connect()(AddTodo)

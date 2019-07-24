@@ -20,10 +20,10 @@ import saga from './saga';
 import messages from './messages';
 import "react-table/react-table.css";
 
-export function Table() {
+export function Table({todos}) {
   useInjectReducer({ key: 'table', reducer });
   useInjectSaga({ key: 'table', saga });
-  const  data = [{ id: "1", describe: "ygudxg", isCompleted: "true" }]
+  
   return (
     <div>
       <Helmet>
@@ -33,7 +33,7 @@ export function Table() {
       <FormattedMessage {...messages.header} />
       <div>
         <ReactTable
-          data={data}
+          data={todos}
           columns={[
             {
               
@@ -44,11 +44,11 @@ export function Table() {
                 },
                 {
                   Header: "Describe",
-                  accessor: "describe"
+                  accessor: "text"
                 },
                 {
                   Header: "IsCompleted",
-                  accessor: "isCompleted"
+                  accessor: "completed"
                 }
               ]
             },
@@ -66,10 +66,11 @@ export function Table() {
 
 Table.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  todos: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  table: makeSelectTable(),
+  todos: makeSelectTable(),
 });
 
 function mapDispatchToProps(dispatch) {

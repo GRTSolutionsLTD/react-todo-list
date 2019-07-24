@@ -5,7 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the table state domain
  */
 
-const selectTableDomain = state => state.table || initialState;
+const selectTableDomain = state => state.todos || initialState;
 
 /**
  * Other specific selectors

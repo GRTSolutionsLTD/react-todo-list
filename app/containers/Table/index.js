@@ -33,7 +33,11 @@ export function Table({todos}) {
       <FormattedMessage {...messages.header} />
       <div>
         <ReactTable
-          data={todos}
+          data={todos.map(todo =>
+            (todo.completed === true)
+              ? { ...todo, completed: "true" }
+              : { ...todo, completed: "false" }
+          )}
           columns={[
             {
               
@@ -70,7 +74,7 @@ Table.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  todos: makeSelectTable(),
+  todos: makeSelectTable() 
 });
 
 function mapDispatchToProps(dispatch) {

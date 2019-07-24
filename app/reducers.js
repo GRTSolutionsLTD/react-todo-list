@@ -13,6 +13,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
  */
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
+    
     language: languageProviderReducer,
     router: connectRouter(history),
     ...injectedReducers,

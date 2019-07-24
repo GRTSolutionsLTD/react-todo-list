@@ -11,18 +11,19 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
+import ReactTable from "react-table"
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectTable from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import "react-table/react-table.css";
 
 export function Table() {
   useInjectReducer({ key: 'table', reducer });
   useInjectSaga({ key: 'table', saga });
-
+  const  data = [{ id: "1", describe: "ygudxg", isCompleted: "true" }]
   return (
     <div>
       <Helmet>
@@ -30,6 +31,35 @@ export function Table() {
         <meta name="description" content="Description of Table" />
       </Helmet>
       <FormattedMessage {...messages.header} />
+      <div>
+        <ReactTable
+          data={data}
+          columns={[
+            {
+              
+              columns: [
+                {
+                  Header: "Id",
+                  accessor: "id"
+                },
+                {
+                  Header: "Describe",
+                  accessor: "describe"
+                },
+                {
+                  Header: "IsCompleted",
+                  accessor: "isCompleted"
+                }
+              ]
+            },
+
+          ]}
+          defaultPageSize={10}
+          className="-striped -highlight"
+        />
+        <br />
+
+      </div>
     </div>
   );
 }

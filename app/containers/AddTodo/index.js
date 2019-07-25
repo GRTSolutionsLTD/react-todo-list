@@ -1,16 +1,17 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
-import {addTodo} from '../App/actions/index'
+import { addTodo } from '../App/actions/index'
 
 const AddTodo = ({ dispatch }) => {
   let input
 
   return (
     <div>
-      <form
+      <Form
         onSubmit={e => {
           e.preventDefault()
           if (!input.value.trim()) {
@@ -19,12 +20,16 @@ const AddTodo = ({ dispatch }) => {
           dispatch(addTodo(input.value))
           input.value = ''
         }}>
-        <input
-          ref={node => input = node} />
-        <button type="submit">
-          Add Todo
-        </button>
-      </form>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="text" placeholder="Enter name" ref={node => input = node} />
+
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+
     </div>
   )
 }

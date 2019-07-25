@@ -5,7 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the circle state domain
  */
 
-const selectCircleDomain = state => state.gl || initialState;
+const selectCircleDomain = state => state.todos || initialState;
 
 /**
  * Other specific selectors

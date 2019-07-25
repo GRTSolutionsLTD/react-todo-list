@@ -3,9 +3,13 @@
 const express = require('express');
 const logger = require('./logger');
 
+const fs = require("fs");
+const bodyParser = require('body-parser');
+
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
+
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok =
   (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
@@ -13,6 +17,44 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const app = express();
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
+const jsonPath = `${__dirname}\\data\\tasks.json`;
+app.get('/api/tasks/list', (req, res) => {
+  fs.readFile(jsonPath, 'utf8', (err, data) => {
+    res.end(data);
+  });
+});
+
+app.post('/api/tasks/add', (req, res) => {
+  fs.readFile(jsonPath, 'utf8', (err, data) => {
+    data = JSON.parse(data);
+    const task = req.body;
+    // task.id = data.length + 1;
+    const newData = [...data, task];
+    const jsonData = JSON.stringify(newData);
+
+    fs.writeFile(jsonPath, jsonData, (writeFileErr) => {
+      if (!writeFileErr) {
+        res.end(jsonData);
+      } else {
+        res.end(JSON.stringify(data));
+      }
+    })
+  });
+});
+
+// app.get('/api/contacts/:id', (req, res) => {
+//   fs.readFile(jsonPath, 'utf8', (err, data) => {
+//     const contacts = JSON.parse(data);
+//     const contact = contacts.find(contactObj => contactObj._id === req.params.id) || {};
+//     res.end(JSON.stringify(contact));
+//   });
+// });
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);

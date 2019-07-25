@@ -1,10 +1,4 @@
-/**
- *
- * Circle
- *
- */
-
-import React, { memo } from 'react';
+import React, { memo ,useEffect,useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -15,9 +9,23 @@ import { useInjectReducer } from 'utils/injectReducer';
 import reducer from './reducer';
 import saga from './saga';
 
-export function Circle() {
+
+
+export function Circle({todos}) {
   useInjectReducer({ key: 'circle', reducer });
   useInjectSaga({ key: 'circle', saga });
+
+
+  const [completed, setCompleted] = useState(0);
+  const [notCompleted, setNotCompleted] = useState(0);
+
+  useEffect(() => {
+    const comletedTasks = todos.filter(t => t.completed===true);
+    setCompleted(comletedTasks.length); 
+    
+    const notComletedTasks = todos.filter(t => !t.completed===true);
+    setNotCompleted(notComletedTasks.length);
+  });
 
   return (
     <div>
@@ -26,15 +34,20 @@ export function Circle() {
         <meta name="description" content="Description of Circle" />
       </Helmet>
       <svg height="100" width="100">
-        <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="3" fill="pink" />
-      
+        <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="3" fill="pink"  />
       </svg>
+      <p>comleted tasks:</p>
+      <label>{completed}</label>
+      <br></br>
+      <p>not comleted tasks:</p>
+      <label>{notCompleted}</label>
     </div>
   );
 }
 
 Circle.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  todos:PropTypes.array
 };
 
 // const mapStateToProps = createStructuredSelector({
@@ -43,7 +56,7 @@ Circle.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    todoList: state
+    todos: state.todos
   }
 }
 

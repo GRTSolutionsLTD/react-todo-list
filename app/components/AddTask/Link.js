@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import Button from 'react-bootstrap/Button'
 const Link = ({ active, children, onClick }) => (
-  <button
+  <Button
     type="button"
     onClick={onClick}
     disabled={active}
@@ -11,7 +11,7 @@ const Link = ({ active, children, onClick }) => (
     }}
   >
     {children}
-  </button>
+  </Button>
 )
 
 Link.propTypes = {

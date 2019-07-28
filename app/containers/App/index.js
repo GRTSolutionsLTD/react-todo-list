@@ -17,7 +17,7 @@ import Header from '../../components/Header';
 import GlobalStyle from '../../global-styles';
 import AppComponent from '../../components/AddTask/App';
 import Circle from '../Circle/index';
-import Footer from '../../components/AddTask/Footer'
+
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/circle" component ={Circle}/>
         <Route component={NotFoundPage} />
       </Switch>
-      <Footer />
+      
       <GlobalStyle />
     </div>
   );

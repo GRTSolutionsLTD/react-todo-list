@@ -6,15 +6,13 @@ import Todo from './Todo'
 
 const TodoList = ({ todos, toggleTodo }) => (
   <ListGroup as="ul">
-    <ListGroup.Item as="li">
-      {todos.map(todo =>
-        <Todo
-          key={todo.id}
-          {...todo}
-          onClick={() => toggleTodo(todo.id)}
-        />
-      )}
-    </ListGroup.Item>
+    {todos.map(todo =>
+      <Todo
+        key={todo.id}
+        {...todo}
+        onClick={() => toggleTodo(todo.id)}
+      />
+    )}
   </ListGroup>
 )
 

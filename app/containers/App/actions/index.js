@@ -1,8 +1,10 @@
 let nextTodoId = 0
-export function addTodo(text)  {
+export function addTodo(text) {
   nextTodoId += 1;
   return { type: 'ADD_TODO', id: nextTodoId, text };
 }
+
+
 
 export const getTodo = () => ({ type: 'GET_TODO' })
 

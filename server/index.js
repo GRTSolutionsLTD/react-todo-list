@@ -29,15 +29,44 @@ app.get('/api/tasks/list', (req, res) => {
     res.end(data);
   });
 });
+app.get('/api/tasks/toggle/:id', (req, res) => {
+  fs.readFile(jsonPath, 'utf8', (err, data) => {
+    // eslint-disable-next-line no-debugger
+    data = JSON.parse(data);
+
+    const data1 = data.map(todo =>
+      (todo.id === req.params.id)
+        ? { ...todo, completed: true }
+        : todo)
+    const newData = [...data1];
+    // eslint-disable-next-line no-debugger
+    debugger;
+    // newData.add(task);
+    const jsonData = JSON.stringify(newData);
+
+    fs.writeFile(jsonPath, jsonData, (writeFileErr) => {
+      if (!writeFileErr) {
+        res.end(jsonData);
+      } else {
+        res.end(JSON.stringify(data));
+      }
+    })
+  });
+});
 
 app.post('/api/tasks/add', (req, res) => {
   fs.readFile(jsonPath, 'utf8', (err, data) => {
+    // eslint-disable-next-line no-debugger
     data = JSON.parse(data);
-    const task = req.body;
-    // task.id = data.length + 1;
-    const newData = [...data, task];
+    const task1 = req.body;
+    // task1.id = data.length + 1;
+    const newData = [...data, task1];
+    // eslint-disable-next-line no-debugger
+    // debugger;
+    // newData.add(task);
     const jsonData = JSON.stringify(newData);
-
+    // eslint-disable-next-line no-debugger
+    debugger;
     fs.writeFile(jsonPath, jsonData, (writeFileErr) => {
       if (!writeFileErr) {
         res.end(jsonData);

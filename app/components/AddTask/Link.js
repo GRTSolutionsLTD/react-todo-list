@@ -1,17 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Nav from 'react-bootstrap/Nav'
 
 const Link = ({ active, children, onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    disabled={active}
-    style={{
-      marginLeft: '4px',
-    }}
-  >
-    {children}
-  </button>
+  <Nav variant="pills" activeKey="1"s>
+    <Nav.Item>
+      <Nav.Link 
+        eventKey="1" 
+        href="#/home"
+        type="button"
+        onClick={onClick}
+        disabled={active}
+        style={{
+          marginLeft: '4px',
+        }}
+      >
+        {children},mnbvcx
+      </Nav.Link>
+    </Nav.Item>
+  </Nav>
+
 )
 
 Link.propTypes = {

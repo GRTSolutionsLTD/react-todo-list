@@ -1,7 +1,5 @@
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
-
+import Nav from 'react-bootstrap/Nav'
 
 
 
@@ -9,20 +7,20 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <div>
-      <nav>
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="/table">
-          my list
-        </Link>
-        <Link to="/addTask">
-          add task
-        </Link>
-        <Link to="/circle">
-          show completed!
-        </Link>
-      </nav>
+      <Nav variant="pills" defaultActiveKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/">Home</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/table">All Tasks</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/addTask" >Add/Edit Task</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/circle" >Status</Nav.Link>
+        </Nav.Item>
+      </Nav>
     </div>
   );
 }

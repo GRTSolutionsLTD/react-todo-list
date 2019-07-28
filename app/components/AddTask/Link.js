@@ -15,7 +15,7 @@ const Link = ({ active, children, onClick }) => (
           marginLeft: '4px',
         }}
       >
-        {children},mnbvcx
+        {children}
       </Nav.Link>
     </Nav.Item>
   </Nav>

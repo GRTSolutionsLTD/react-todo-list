@@ -11,7 +11,8 @@ const AddTodo = ({ dispatch }) => {
 
   return (
     <div>
-      <Form
+      <Form 
+        className="ml-5"
         onSubmit={e => {
           e.preventDefault()
           if (!input.value.trim()) {
@@ -20,7 +21,7 @@ const AddTodo = ({ dispatch }) => {
           dispatch(addTodo(input.value))
           input.value = ''
         }}>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group  controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="text" placeholder="Enter name" ref={node => input = node} />
 

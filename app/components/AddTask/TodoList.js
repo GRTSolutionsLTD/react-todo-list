@@ -5,7 +5,7 @@ import Todo from './Todo'
 
 
 const TodoList = ({ todos, toggleTodo }) => (
-  <ListGroup as="ul">
+  <ListGroup className="ml-5 mt-5 w-50" as="ul" >
     {todos.map(todo =>
       <Todo
         key={todo.id}

@@ -22,8 +22,8 @@ const AddTodo = ({ dispatch }) => {
           input.value = ''
         }}>
         <Form.Group  controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="text" placeholder="Enter name" ref={node => input = node} />
+          <Form.Label>enter task</Form.Label>
+          <Form.Control type="text" placeholder="Enter task" ref={node => input = node} />
 
         </Form.Group>
         <Button variant="primary" type="submit">

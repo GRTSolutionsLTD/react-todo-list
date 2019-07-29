@@ -1,27 +1,30 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav'
-
+import { Link } from 'react-router-dom';
+import '../style/header.scss'
 
 
 
 function Header() {
   return (
-    <div>
-      <Nav variant="pills" defaultActiveKey="/home">
-        <Nav.Item>
-          <Nav.Link href="/">Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/table">All Tasks</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/addTask" >Add/Edit Task</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/circle" >Status</Nav.Link>
-        </Nav.Item>
-      </Nav>
-    </div>
+    <nav>
+      <div className="">
+        <ul className="">
+          <li> <Link to="/">
+            Home
+          </Link>
+          </li>
+          <li><Link to="/table">
+            my list
+          </Link></li>
+          <li><Link to="/addTask">
+            add task
+          </Link></li>
+          <li><Link to="/circle">
+            show completed!
+          </Link></li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 

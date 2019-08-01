@@ -1,0 +1,121 @@
+ @import 'main.scss';
+
+ .nav-header {
+
+     background-color: #212529 !important;
+     display: flex;
+     position: relative;
+    
+    //   position: fixed;
+    //   width: 100%;
+    //   top:0;
+      z-index: 5;
+     
+     button {
+
+         position: absolute;
+         right: 10px;
+         top: 10px;
+         color: rgba(255, 255, 255, 0.5);
+         border-color: rgba(255, 255, 255, 0.1);
+         padding: 0px 10px;
+         font-size: 1.25rem;
+         background-color: transparent;
+         border: 1px solid white;
+         border-radius: .25rem;
+
+         &:hover {
+             background-color: #75787a;
+         }
+
+     }
+
+     p {
+
+         width: 100px;
+         height: 30px;
+         padding-top: 10px;
+         margin-bottom: 20px;
+         font-size: 20px;
+         margin-top: 0px;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+         font-weight: 600;
+         padding-left: 20px;
+     }
+
+     .links {
+         
+         width: 100%;
+         display: flex;
+         margin-left: 20px;
+         justify-content: flex-end;
+
+         ul {
+             display: flex;
+             margin-top: 0px;
+             flex-direction: row;
+             padding-left: 20px;
+
+             li {
+                 margin-top: 20px;
+                 padding-bottom: 10px;
+
+                 a {
+                     margin-bottom: 10px;
+                     color: white;
+                     padding: 10px;
+                 }
+
+                 #down {
+                     border: 1px solid #6c757d;
+                     border-radius: 5px;
+
+                 }
+             }
+         }
+     }
+ }
+
+
+
+ @media (min-width: 768px) {
+    //  .nav-header {
+    //      display: flex;
+    //  }
+
+     .nav-header .links {
+         display: flex !important;
+         padding-right: 30px;
+     }
+
+     button {
+         display: none;
+     }
+
+
+ }
+
+ @media (max-width: 767px) {
+     .nav-header {
+         display: grid;
+     }
+
+     .nav-header .links {
+         display: none;
+         justify-content: flex-start;
+     }
+
+     .nav-header .links ul {
+         display: block;
+         padding-left: 0px;
+     }
+
+     .nav-header .links ul #down {
+         padding-right: 8rem;
+         padding-left: 8rem
+     }
+ }
+ .jumbotron{
+     position: absolute;
+     top:50px;
+ }

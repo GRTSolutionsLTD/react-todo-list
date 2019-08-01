@@ -6,9 +6,10 @@ import './styleAddTask.scss'
 
 const AppComponent = () => (
   <div>
-    <Footer />
+   
     <AddTodo />
     <VisibleTodoList />
+    <Footer />
     
   </div>
 )

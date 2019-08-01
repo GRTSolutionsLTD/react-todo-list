@@ -1,8 +1,6 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import { addTodo } from '../App/actions/index'
 
@@ -11,7 +9,7 @@ const AddTodo = ({ dispatch }) => {
 
   return (
     <div>
-      <Form 
+      <form 
         className="ml-5"
         onSubmit={e => {
           e.preventDefault()
@@ -21,15 +19,13 @@ const AddTodo = ({ dispatch }) => {
           dispatch(addTodo(input.value))
           input.value = ''
         }}>
-        <Form.Group  controlId="formBasicEmail">
-          <Form.Label>enter task</Form.Label>
-          <Form.Control type="text" placeholder="Enter task" ref={node => input = node} />
-
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <span>enter task</span>
+        <br/>
+        <input type="text" placeholder="Enter task" ref={node => input = node} />
+        <br/><br/><br/>
+        <input variant="primary" type="submit" value="add"/>
+       
+      </form>
 
     </div>
   )
